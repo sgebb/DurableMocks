@@ -9,6 +9,7 @@
     <RepositoryUrl>https://github.com/sgebb/DurableMocks</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>Helper framework for testing Durable Orchestrations and Activities without stubing the implementations</Description>
   </PropertyGroup>
 
   <ItemGroup>

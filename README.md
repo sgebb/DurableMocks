@@ -1,6 +1,7 @@
 # DurableMocks
 Anti-mocking framework for Durable Functions
-
+Uses FakeItEasy under the hood to mock TaskOrchestrationContext, and routes the implementation to the requested Activity or Orchestration
+Does not verify serialization and deserialization of inputs and outsputs
 
 # How to:
 
