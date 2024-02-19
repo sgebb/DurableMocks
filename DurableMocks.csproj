@@ -7,7 +7,14 @@
   </PropertyGroup>
   <PropertyGroup>
     <RepositoryUrl>https://github.com/sgebb/DurableMocks</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)LICENSE" Pack="true" PackagePath="" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="" />
+</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FakeItEasy" Version="8.1.0" />
