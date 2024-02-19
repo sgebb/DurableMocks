@@ -2,7 +2,7 @@ name: Action to build and publish the project as a nuget package to github packa
 
 on:
   push:
-    branches: [master]
+    branches: [main]
       
 jobs:
   build:
