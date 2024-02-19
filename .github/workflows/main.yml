@@ -35,7 +35,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Build and Pack NuGet package
-      run: dotnet pack src/services/Florage.Shared/Florage.Shared.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
+      run: dotnet pack DurableMocks.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
     - name: Upload NuGet package to GitHub
       uses: actions/upload-artifact@v2
       with:
@@ -45,7 +45,7 @@ jobs:
   release:
     runs-on: ubuntu-latest    
     needs: build
-    if: github.ref == 'refs/heads/master' # only run job if on the master branch   
+    if: github.ref == 'refs/heads/main' # only run job if on the master branch   
     
     steps:  
     #Push NuGet package to GitHub packages
