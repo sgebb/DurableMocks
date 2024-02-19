@@ -5,6 +5,9 @@
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <RepositoryUrl>https://github.com/sgebb/DurableMocks</RepositoryUrl>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FakeItEasy" Version="8.1.0" />
