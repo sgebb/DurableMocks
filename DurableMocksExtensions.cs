@@ -10,18 +10,22 @@ namespace DurableMocks
 {
     public static class DurableMocksExtensions
     {
-        public static TaskOrchestrationContext CreateDurableMock(this IServiceProvider serviceProvider, Assembly assembly)
+        public static TaskOrchestrationContext CreateDurableMock(this IServiceProvider serviceProvider, params Assembly[] assemblies)
         {
             var orchestrationContext = A.Fake<TaskOrchestrationContext>();
             var taskActivityContext = A.Fake<TaskActivityContext>();
             A.CallTo(() => taskActivityContext.InstanceId).Returns(Guid.NewGuid().ToString());
             A.CallTo(() => taskActivityContext.Name).Returns("DurableMocks");
 
-            foreach (Type type in assembly.GetTypes())
+            foreach (var assembly in assemblies)
             {
-                serviceProvider.SetupFakeCallForType(orchestrationContext, type, typeof(TaskOrchestrator<,>), "CallSubOrchestratorAsync", orchestrationContext);
-                serviceProvider.SetupFakeCallForType(orchestrationContext, type, typeof(TaskActivity<,>), "CallActivityAsync", taskActivityContext);
+                foreach (Type type in assembly.GetTypes())
+                {
+                    serviceProvider.SetupFakeCallForType(orchestrationContext, type, typeof(TaskOrchestrator<,>), "CallSubOrchestratorAsync", orchestrationContext);
+                    serviceProvider.SetupFakeCallForType(orchestrationContext, type, typeof(TaskActivity<,>), "CallActivityAsync", taskActivityContext);
+                }
             }
+            
             return orchestrationContext;
         }
 
